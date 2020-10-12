@@ -1,8 +1,12 @@
 // console.log("Welcome to the main module")
-import { useJournalEntries} from './journalDataProvider.js';
+// import { useJournalEntries} from './JournalDataProvider.js';
 
-const journalEntries = useJournalEntries()
+// const journalEntries = useJournalEntries()
 
-console.log(journalEntries)
+// console.log(journalEntries)
+
+import { EntryListComponent } from "./JournalEntryList.js";
+
+EntryListComponent();
 
 

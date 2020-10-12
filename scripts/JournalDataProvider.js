@@ -35,8 +35,9 @@ const journal = [
 */
 export const useJournalEntries = () => {
     const sortedByDate = journal.sort(
-        (currentEntry, nextEntry) =>
+        (currentEntry, nextEntry) => {
+            // console.log(currentEntry, currentEntry.date)
             Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
-    )
+        })
     return sortedByDate
 }
