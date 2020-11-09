@@ -1,33 +1,4 @@
-const journal = [
-    {
-        id: 1,
-        date: "09/29/2020",
-        concept: "HTML & CSS",
-        entry: "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-        mood: "Ok"
-    },
-    {
-        id: 2,
-        date: "09/30/2020",
-        concept: "Complex Flexbox",
-        entry: "I tried to have an element in my Flexbox layout also be another Flexbox layout. It hurt my brain. I hate Steve.",
-        mood: "Sad"
-    },
-    {
-        id: 3,
-        date: "10/1/2020",
-        concept: "Martins Aquarium",
-        entry: "We talked about martins Aquarium and made all the js file I am very exiceted to learn new thing everyday.",
-        mood: "happy"
-    },
-    {
-        id: 4,
-        date: "10/2/2020",
-        concept: "Martins Aquarium",
-        entry: "We made the html part of martins aquarium with the help of js, that was real fun I loving it.",
-        mood: "happy"
-    },
-]
+let journal = []
 
 /*
     You export a function that provides a version of the
@@ -41,3 +12,29 @@ export const useJournalEntries = () => {
         })
     return sortedByDate
 }
+
+export const getJournal = () => {
+    return fetch("http://localhost:8088/entries") // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(parsedJournal => {
+            console.log(parsedJournal)
+            // What should happen when we finally have the array?
+            journal = parsedJournal
+        })
+}
+
+// export const useNotes = () => {
+//     return notes.slice()
+// }
+
+// export const saveJournal = (note) => {
+//     return fetch('http://localhost:8088/entries', {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(note)
+//     })
+//     .then(getNotes)
+//     .then(dispatchStateChangeEvent)
+// }

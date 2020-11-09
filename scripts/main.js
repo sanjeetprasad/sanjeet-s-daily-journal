@@ -5,8 +5,11 @@
 
 // console.log(journalEntries)
 
-import { EntryListComponent } from "./JournalEntryList.js";
+import { EntryListComponent } from "./JournalEntryList.js"
+import {getJournal} from "./JournalDataProvider.js"
 
 EntryListComponent();
+
+getJournal()
 
 
