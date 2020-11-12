@@ -7,6 +7,9 @@
 
 import { EntryListComponent } from "./JournalEntryList.js"
 import {getJournal} from "./JournalDataProvider.js"
+import {JournalFormComponent} from "./form/JournalForm.js"
+
+JournalFormComponent()
 
 EntryListComponent();
 
