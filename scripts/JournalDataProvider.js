@@ -1,4 +1,5 @@
 let journal = []
+let moods = []
 
 /*
     You export a function that provides a version of the
@@ -17,24 +18,20 @@ export const getJournal = () => {
     return fetch("http://localhost:8088/entries") // Fetch from the API
         .then(response => response.json())  // Parse as JSON
         .then(parsedJournal => {
-            console.log(parsedJournal)
+            // console.log(parsedJournal)
             // What should happen when we finally have the array?
             journal = parsedJournal
         })
 }
 
-// export const useNotes = () => {
-//     return notes.slice()
-// }
+export const getMoods = () => {
+    return fetch ("http://localhost:8088/moods")
+    .then(res => res.json())
+    .then(parsedMood => {
+        moods = parsedMood
+    })
+}
 
-// export const saveJournal = (note) => {
-//     return fetch('http://localhost:8088/entries', {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(note)
-//     })
-//     .then(getNotes)
-//     .then(dispatchStateChangeEvent)
-// }
+export const useMoods = () => {
+    return moods.slice()
+}

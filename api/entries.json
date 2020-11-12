@@ -29,5 +29,24 @@
         "entry": "We made the html part of martins aquarium with the help of js, that was real fun I loving it.",
         "mood": "happy"
     }
-    ]
+    ],
+
+    "moods": [
+        {
+          "id": 1,
+          "label": "happy"
+        },
+        {
+          "id": 2,
+          "label": "ok"
+        },
+        {
+          "id": 3,
+          "label": "sad"
+        },
+        {
+          "id": 4,
+          "label": "tired"
+        }
+      ]
 }
