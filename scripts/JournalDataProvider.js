@@ -1,18 +1,13 @@
+
+const eventHub = document.querySelector(".container")
+
 let journal = []
-let moods = []
 
 /*
     You export a function that provides a version of the
     raw data in the format that you want
 */
-export const useJournalEntries = () => {
-    const sortedByDate = journal.sort(
-        (currentEntry, nextEntry) => {
-            // console.log(currentEntry, currentEntry.date)
-            Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
-        })
-    return sortedByDate
-}
+
 
 export const getJournal = () => {
     return fetch("http://localhost:8088/entries") // Fetch from the API
@@ -24,14 +19,31 @@ export const getJournal = () => {
         })
 }
 
-export const getMoods = () => {
-    return fetch ("http://localhost:8088/moods")
-    .then(res => res.json())
-    .then(parsedMood => {
-        moods = parsedMood
-    })
+export const useJournalEntries = () => {
+    let sortedByDate = journal.slice
+    sortedByDate = journal.sort(
+        (currentEntry, nextEntry) => {
+            // console.log(currentEntry, currentEntry.date)
+            Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
+        })
+    return sortedByDate
 }
 
-export const useMoods = () => {
-    return moods.slice()
+export const saveJournal = (entryObj) => {
+    return fetch("http://localhost:8088/entries", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(entryObj)
+    })
+    .then(getJournal)
+    .then(dispatchStateChangeEvent)
+
+}
+
+const dispatchStateChangeEvent = () => {
+    const journalStateChangedEvent = new CustomEvent("journalStateChanged")
+
+    eventHub.dispatchEvent(journalStateChangedEvent)
 }
