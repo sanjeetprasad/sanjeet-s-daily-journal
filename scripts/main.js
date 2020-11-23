@@ -6,13 +6,12 @@
 // console.log(journalEntries)
 
 import { EntryListComponent } from "./JournalEntryList.js"
-import {getJournal} from "./JournalDataProvider.js"
-import {JournalFormComponent} from "./form/JournalForm.js"
+import {JournalForm} from "./JournalForm.js"
 
-JournalFormComponent()
+JournalForm()
 
 EntryListComponent();
 
-getJournal()
+
 
 

@@ -5,14 +5,15 @@
  *    data provider component
  */
 import { useJournalEntries, getJournal } from "./JournalDataProvider.js"
-import { JournalEntryComponent } from "./JournalEntry.js"
+import {JournalHtmlCard} from "./JournalEntry.js"
 
 // DOM reference to where all entries will be rendered
-const entryLog = document.querySelector(".entryLog")
+const journalContainer = document.querySelector(".entryLog")
 
 export const EntryListComponent = () => {
     // Use the journal entry data from the data provider component
-    getJournal().then(() => {
+    getJournal()
+    .then(() => {
 
         const entries = useJournalEntries()
 
@@ -21,10 +22,16 @@ export const EntryListComponent = () => {
     })
 }
     
-const render = (entries) => {
+const render = (journalArray) => {
     let journalEntryHTML = ""
-    for (const entry of entries) {
-        journalEntryHTML = JournalEntryComponent(entry)
-        entryLog.innerHTML += journalEntryHTML
+    for (const journal of journalArray) {
+        journalEntryHTML += JournalHtmlCard(journal)
+        
     }
+    journalContainer.innerHTML = `
+       <div class="journal__card">
+        <h3> My Journal Entry </h3>
+        ${journalEntryHTML}
+        </div>
+    `
 }

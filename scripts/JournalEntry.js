@@ -1,4 +1,4 @@
-export const JournalEntryComponent = (entry) => {
+export const JournalHtmlCard = (entry) => {
     return `
         <section id="entry--${entry.id}" class="journalEntry">
             
